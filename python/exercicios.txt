@@ -1,4 +1,0 @@
-27/04/2024
-
-- Fazer a rota para UPDATE, incluindo o Thundertest
-- Fazer a rota para DELETE, incluindo o Thundertest

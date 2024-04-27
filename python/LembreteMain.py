@@ -5,12 +5,11 @@ import os
 
 
 from Lembrete import Lembrete
-from DB import DB
+from DBLembretes import DBLembretes
 
 # Variables
-PORT = 8080
 app = FastAPI()
-db = DB()
+db = DBLembretes()
 
 # Load .env variables
 load_dotenv()

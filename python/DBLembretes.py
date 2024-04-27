@@ -1,7 +1,7 @@
 from Lembrete import Lembrete
 from typing import Dict
 
-class DB:
+class DBLembretes:
     table: Dict[str, Lembrete]
 
     def __init__(self):
