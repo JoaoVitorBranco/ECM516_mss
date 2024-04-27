@@ -1,5 +1,9 @@
 from typing import Dict
 from fastapi import FastAPI, HTTPException
+from dotenv import load_dotenv
+import os
+
+
 from Lembrete import Lembrete
 from DB import DB
 
@@ -7,6 +11,13 @@ from DB import DB
 PORT = 8080
 app = FastAPI()
 db = DB()
+
+# Load .env variables
+load_dotenv()
+
+# Load environment variables
+if os.getenv("PORT"):
+    PORT = int(os.getenv("PORT"))
 
 # Routes
 @app.get("/lembrete/")
@@ -45,6 +56,7 @@ def delete_item(id_lembrete: str):
         "lembrete": lembrete.to_dict()
     }
 
+# Main
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=PORT)
