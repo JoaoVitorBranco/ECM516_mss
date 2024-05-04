@@ -25,6 +25,7 @@ if os.getenv("PORT"):
 def evento_handler(req: dict):
     requests.post("http://localhost:4000/evento", json=req)
     requests.post("http://localhost:5000/evento", json=req)
+    requests.post("http://localhost:6000/evento", json=req)
     return {
         "message": "Eventos disparados com sucesso!"
     }

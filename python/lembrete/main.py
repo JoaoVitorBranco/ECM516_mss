@@ -3,6 +3,7 @@ from typing import Dict
 from fastapi import FastAPI, HTTPException, status
 from dotenv import load_dotenv
 import os
+import requests
 
 # Fix import path
 import sys
@@ -33,6 +34,11 @@ def get_lembretes():
 def create_item(req: dict):
     idx = str(db.length() + 1)
     lembrete = db.put(lembrete=Lembrete(id_lembrete=idx, texto=req["texto"]))
+
+    requests.post("http://localhost:10000/evento", json={
+        "tipo": "LEMBRETE_CREATE",
+        "conteudo": lembrete.to_dict(),
+    })
 
     return {
         "message": "Item created successfully", 

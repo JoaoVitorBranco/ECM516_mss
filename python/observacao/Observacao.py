@@ -3,11 +3,11 @@ class Observacao:
     id_lembrete: str
     texto: str
     
-    def __init__(self, id_observacao: str, id_lembrete: str, texto: str, observacao: dict = None):
+    def __init__(self, id_observacao: str = None, id_lembrete: str = None, texto: str = None, observacao: dict = None):
         if observacao:
-            self.id_observacao = observacao.id_observacao
-            self.id_lembrete = observacao.id_lembrete
-            self.texto = observacao.texto
+            self.id_observacao = observacao.get("id_observacao")
+            self.id_lembrete = observacao.get("id_lembrete")
+            self.texto = observacao.get("texto")
         else:
             self.id_observacao = id_observacao
             self.id_lembrete = id_lembrete

@@ -1,6 +1,6 @@
 from typing import List
 import uuid
-from Observacao import Observacao
+from observacao.Observacao import Observacao
 
 class DBObservacoes:
     table: List[Observacao]
