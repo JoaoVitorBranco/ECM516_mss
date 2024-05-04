@@ -11,7 +11,7 @@ class Lembrete:
             self.texto = texto
 
     def __str__(self):
-        return f'{self.titulo} - {self.descricao}'
+        return f'{self.id_lembrete} - {self.texto}'
     
     def to_dict(self):
         return {

@@ -1,10 +1,16 @@
-from typing import Dict
-from fastapi import FastAPI, HTTPException
+# Import libraries
+from fastapi import FastAPI, HTTPException, status
 from dotenv import load_dotenv
 import os
 import uuid
 
-from DBLembretes import DBLembretes
+# Fix import path
+import sys
+import pathlib
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
+
+# Import packages
+from lembrete.DBLembretes import DBLembretes
 from DBObservacoes import DBObservacoes
 from Observacao import Observacao
 
@@ -30,7 +36,7 @@ def get_observacao(id_lembrete: str):
     
     return dbObservacoes.get_by_lembrete(id_lembrete=id_lembrete)
 
-@app.post("/lembrete/{id_lembrete}/observacao/")
+@app.post("/lembrete/{id_lembrete}/observacao/", status_code=status.HTTP_201_CREATED)
 def create_observacao(id_lembrete: str, req: dict):
     
     lembrete = dbLembretes.get(id_lembrete=id_lembrete)

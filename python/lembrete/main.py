@@ -1,9 +1,15 @@
+# Import libraries
 from typing import Dict
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, status
 from dotenv import load_dotenv
 import os
 
+# Fix import path
+import sys
+import pathlib
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 
+# Import packages
 from Lembrete import Lembrete
 from DBLembretes import DBLembretes
 
@@ -23,7 +29,7 @@ if os.getenv("PORT"):
 def get_lembretes():
     return db.get_all()
 
-@app.post("/lembrete/")
+@app.post("/lembrete/", status_code=status.HTTP_201_CREATED)
 def create_item(req: dict):
     idx = str(db.length() + 1)
     lembrete = db.put(lembrete=Lembrete(id_lembrete=idx, texto=req["texto"]))

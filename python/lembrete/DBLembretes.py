@@ -1,4 +1,4 @@
-from Lembrete import Lembrete
+from lembrete.Lembrete import Lembrete
 from typing import Dict
 
 class DBLembretes:
